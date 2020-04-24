@@ -1383,7 +1383,7 @@ func (o *Object) decodeMetaDataRaw(ID, SHA1 string, Size int64, UploadTimestamp 
 	o.mimeType = mimeType
 	// Read SHA1 from metadata if it exists and isn't set
 	if o.sha1 == "" || o.sha1 == "none" {
-		o.sha1 = Info[sha1Key]
+		o.sha1 = strings.ToLower(Info[sha1Key])
 	}
 	// Remove unverified prefix - see https://www.backblaze.com/b2/docs/uploading.html
 	// Some tools (eg Cyberduck) use this
